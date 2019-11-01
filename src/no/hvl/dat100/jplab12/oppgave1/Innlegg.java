@@ -3,21 +3,22 @@ package no.hvl.dat100.jplab12.oppgave1;
 import no.hvl.dat100.jplab12.common.TODO;
 
 public abstract class Innlegg {
-	
-	private int id;
-	private String bruker;
-	private String dato;
-	private int likes;
-	
+
+	protected int id;
+	protected String bruker;
+	protected String dato;
+	protected int likes;
+
 	public Innlegg() {
-		
+
 	}
-	
+
 	public Innlegg(int id, String bruker, String dato) {
 
 		this.id = id;
 		this.bruker = bruker;
 		this.dato = dato;
+		this.likes = 0;
 	}
 
 	public Innlegg(int id, String bruker, String dato, int likes) {
@@ -27,9 +28,9 @@ public abstract class Innlegg {
 		this.dato = dato;
 		this.likes = likes;
 	}
-	
+
 	public String getBruker() {
-		
+
 		return bruker;
 
 	}
@@ -53,29 +54,29 @@ public abstract class Innlegg {
 	public int getLikes() {
 		return likes;
 	}
-	
-	public void doLike () {
+
+	public void doLike() {
 		likes++;
 	}
-	
+
 	public boolean erLik(Innlegg innlegg) {
-		if(this.equals(innlegg)) {
+		if (this.id == innlegg.id) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public String toString() {
-		
+
 		return id + "\n" + bruker + "\n" + dato + "\n" + likes + "\n";
 	}
-	
+
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-		
-		throw new UnsupportedOperationException(TODO.method());
-				
+
+		return "<h2>" + bruker + "@" + dato + " [" + likes + "]</h2>\n";
+
 	}
 }
